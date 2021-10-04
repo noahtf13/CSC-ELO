@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 
+
 class ScrapeCSC:
     def __init__(self, url):
         self.url = url
@@ -51,7 +52,6 @@ class ScrapeCSC:
                 score_list_clean[list_val+1]
             ])
         return games_list
-
 
     def scrape_games(self):
         final_games_list = []

@@ -1,13 +1,5 @@
 import numpy as np
-import pandas as pd
-
-import scrape
 import math
-
-url = 'https://cscsports.com/e/sunday-mens-basketball-5v5-fall-2021/schedule/stage/139364/division/2%29+BRONZE'
-scraper = scrape.ScrapeCSC(url=url)
-list_of_games = scraper.scrape_games()
-
 
 class Elo:
     def __init__(self, games_list, k):
@@ -67,7 +59,3 @@ class Elo:
             elif int(game[3]) > int(game[1]):
                 self._elo_change(winner=game[2], loser=game[0], margin=int(game[3]) - int(game[1]))
         return self.elo_dict
-
-
-elo_json = Elo(games_list=list_of_games, k=34).elo_from_list()
-print(pd.DataFrame(elo_json).transpose().sort_values('elo', ascending=False))
